@@ -3,7 +3,6 @@
 <p align="center">
   <img alt="Linguagem" src="https://img.shields.io/badge/language-C%2B%2B-blue.svg">
   <img alt="Status" src="https://img.shields.io/badge/status-concluído-green.svg">
-  <img alt="Licença" src="https://img.shields.io/badge/license-MIT-informational.svg">
 </p>
 
 > **Resumo:** Implementação de estruturas de dados fundamentais (Listas, Pilhas, Filas e Árvores) em C++, aplicando os quatro pilares da Programação Orientada a Objetos: Abstração, Encapsulamento, Herança e Polimorfismo.
