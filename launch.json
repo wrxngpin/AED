@@ -1,0 +1,25 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "Executar TrabalhoPOO",
+      "type": "cppdbg",
+      "request": "launch",
+      "program": "${workspaceFolder}/trabalhoPOO.exe",
+      "args": [],
+      "stopAtEntry": false,
+      "cwd": "${workspaceFolder}",
+      "environment": [],
+      "externalConsole": true,
+      "MIMode": "gdb",
+      "preLaunchTask": "Compilar Projeto C++",
+      "setupCommands": [
+        {
+          "description": "Ativar pretty-printing para gdb",
+          "text": "-enable-pretty-printing",
+          "ignoreFailures": true
+        }
+      ]
+    }
+  ]
+}
