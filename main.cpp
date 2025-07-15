@@ -19,7 +19,7 @@
 
 using namespace std;
 
-// Variáveis globais
+// Variáveis
 ListaNaoOrdenada lnao;
 ListaOrdenada lord;
 Pilha pilha;
@@ -35,9 +35,6 @@ ListaDuplamenteEncadeadaCircular listaDupEncCirc;
 
 ArvoreBinariaBusca arvore;
 
-
-
-// Protótipos
 void limparBuffer();
 void menuPrincipal();
 void menuListaNaoOrdenada();
@@ -63,15 +60,15 @@ void limparBuffer() {
     cin.ignore(numeric_limits<streamsize>::max(), '\n');
 }
 
-// Verifica se ID já existe em listas (pode estender para pilha/fila)
+// Verifica se ID já existe em listas 
 bool idExiste(int id) {
     if (lnao.buscarPeloId(id) != nullptr) return true;
     if (lord.buscarPeloId(id) != nullptr) return true;
-    // Se quiser, implemente buscarPeloId na pilha e filas e cheque aqui também
+
     return false;
 }
 
-// Cria elemento pedindo ID válido (único)
+// Cria elemento pedindo um ID válido 
 Elemento* criarElementoComIdValido(int tipo) {
     int id;
     while (true) {
@@ -104,8 +101,9 @@ Elemento* criarElementoComIdValido(int tipo) {
 }
 
 Elemento* criarElemento(int tipo) {
-    // Se precisar de uma versão simples sem checagem, mantenha esta
-    // Senão, sempre use criarElementoComIdValido no menu
+
+
+    
     int id;
     cout << "ID: ";
     cin >> id;
@@ -490,10 +488,10 @@ void menuPilha() {
                     const Elemento* topo = pilha.consultarTopo();
                     topo->imprimirInfo();
                     temp.empilhar(const_cast<Elemento*>(topo));
-                    pilha.removerTopoSemDeletar();  // NÃO deleta
+                    pilha.removerTopoSemDeletar();  
                 }
 
-                // Restaurar a pilha original
+                // Restaura a pilha original
                 while (!temp.pilhaVazia()) {
                     pilha.empilhar(const_cast<Elemento*>(temp.consultarTopo()));
                     temp.removerTopoSemDeletar();
@@ -702,13 +700,13 @@ void menuPilhaEncadeada() {
                 cin >> tipo;
                 limparBuffer();
                 Elemento* e = criarElementoComIdValido(tipo);
-                pilhaEnc.empilhar(e); // Usa o objeto pilhaEnc
+                pilhaEnc.empilhar(e); 
                 cout << "Empilhado com sucesso!\n";
                 break;
             }
             case 2: {
                 try {
-                    pilhaEnc.desempilhar(); // Usa o objeto pilhaEnc
+                    pilhaEnc.desempilhar();
                     cout << "Desempilhado com sucesso!\n";
                 } catch (const std::runtime_error& e) {
                     cout << e.what() << endl;
@@ -716,7 +714,7 @@ void menuPilhaEncadeada() {
                 break;
             }
             case 3: {
-                Elemento* topo = pilhaEnc.consultarTopo(); // Usa o objeto pilhaEnc
+                Elemento* topo = pilhaEnc.consultarTopo(); 
                 if (topo) {
                     cout << "Elemento no topo:\n";
                     topo->imprimirInfo();
@@ -756,13 +754,13 @@ void menuFilaEncadeada() {
                 cin >> tipo;
                 limparBuffer();
                 Elemento* e = criarElementoComIdValido(tipo);
-                filaEnc.enfileirar(e); // Usa o objeto filaEnc
+                filaEnc.enfileirar(e); 
                 cout << "Enfileirado com sucesso!\n";
                 break;
             }
             case 2: {
                 try {
-                    filaEnc.desenfileirar(); // Usa o objeto filaEnc
+                    filaEnc.desenfileirar(); 
                     cout << "Desenfileirado com sucesso!\n";
                 } catch (const std::runtime_error& e) {
                     cout << e.what() << endl;
@@ -770,7 +768,7 @@ void menuFilaEncadeada() {
                 break;
             }
             case 3: {
-                Elemento* frente = filaEnc.consultarInicio(); // Usa o objeto filaEnc
+                Elemento* frente = filaEnc.consultarInicio();
                 if (frente) {
                     cout << "Elemento na frente da fila:\n";
                     frente->imprimirInfo();
@@ -797,9 +795,9 @@ void menuListaSimplesmenteEncadeada() {
         cout << "1. Inserir no Inicio\n";
         cout << "2. Inserir no Fim\n";
         cout << "3. Remover Primeiro\n";
-        // Para implementar "imprimirTodos", a sua classe de lista precisa ter esse método.
-        // Assumindo que você adicionará: void imprimirTodos() const;
-        // cout << "4. Imprimir Todos\n";
+
+
+        
         cout << "5. Voltar\n";
         cout << "Escolha uma opcao: ";
         cin >> opcao;
@@ -835,11 +833,7 @@ void menuListaSimplesmenteEncadeada() {
                 }
                 break;
             }
-            /* case 4:
-                cout << "--- Elementos na Lista ---\n";
-                listaSenc.imprimirTodos();
-                break;
-            */
+
             case 5: break;
             default: cout << "Opcao invalida!\n";
         }
@@ -923,7 +917,7 @@ void menuListaDuplamenteEncadeadaCircular() {
     do {
         system("cls || clear");
         cout << "========== LISTA DUPLAMENTE ENCADEADA CIRCULAR ==========\n";
-        // As opções são as mesmas
+
         cout << "1. Inserir no Inicio\n";
         cout << "2. Inserir no Fim\n";
         cout << "3. Remover Primeiro\n";
@@ -936,7 +930,6 @@ void menuListaDuplamenteEncadeadaCircular() {
         cin >> opcao;
         limparBuffer();
 
-        // A lógica é a mesma, mas chama os métodos do objeto 'listaDupEncCirc'
         switch (opcao) {
             case 1: {
                 int tipo; cout << "1. Aluno\n2. Professor\nEscolha: "; cin >> tipo; limparBuffer();
@@ -987,7 +980,6 @@ void menuListaDuplamenteEncadeadaCircular() {
     } while (opcao != 8);
 }
 
-// Esta função vai para o seu arquivo main.cpp
 
 void menuArvoreBinaria() {
     int opcao;
@@ -1012,7 +1004,6 @@ void menuArvoreBinaria() {
                 cin >> tipo;
                 limparBuffer();
 
-                // MELHORIA: Corrigido o nome da função para o padrão do projeto.
                 Elemento* e = criarElementoComIdValido(tipo); 
                 arvore.Inserir(e);
 
@@ -1025,7 +1016,7 @@ void menuArvoreBinaria() {
                 cin >> id;
                 limparBuffer();
 
-                // A lógica de buscar primeiro para dar um feedback mais claro é boa.
+
                 if (arvore.BuscarPeloId(id)) {
                     arvore.RemoverPeloId(id);
                     cout << "Elemento com ID " << id << " removido (ou sua substituição ocorreu).\n";
@@ -1049,7 +1040,7 @@ void menuArvoreBinaria() {
                 break;
             }
             case 4: {
-                // MELHORIA: Verifica se a árvore está vazia antes de imprimir.
+
                 cout << "--- Percurso Em Ordem (In-Order) ---\n";
                 if (arvore.estaVazia()) {
                     cout << "A árvore está vazia.\n";
@@ -1059,7 +1050,7 @@ void menuArvoreBinaria() {
                 break;
             }
             case 5: {
-                // MELHORIA: Verifica se a árvore está vazia antes de imprimir.
+
                 cout << "--- Percurso Pré-Ordem (Pre-Order) ---\n";
                 if (arvore.estaVazia()) {
                     cout << "A árvore está vazia.\n";
@@ -1069,7 +1060,7 @@ void menuArvoreBinaria() {
                 break;
             }
             case 6: {
-                // MELHORIA: Verifica se a árvore está vazia antes de imprimir.
+
                 cout << "--- Percurso Pós-Ordem (Post-Order) ---\n";
                 if (arvore.estaVazia()) {
                     cout << "A árvore está vazia.\n";
