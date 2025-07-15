@@ -42,14 +42,14 @@ bool Deque::desenfileirarFim() {
 
 const Elemento* Deque::consultarInicio() const {
     
-    return listaInterna.consultarPrimeiro(); 
+    return listaInterna.getPrimeiro(); 
 }
 
 // Retorna o elemento do final sem removê-lo
 
 const Elemento* Deque::consultarFim() const {
     
-    return listaInterna.consultarUltimo();
+    return listaInterna.getUltimo();
 }
 
 // Verifica se o deque está vazio
