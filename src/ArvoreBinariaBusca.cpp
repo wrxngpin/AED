@@ -1,7 +1,7 @@
 #include "ArvoreBinariaBusca.h"
 #include <iostream>
 
-// --- Construtor e Destrutor ---
+// Construtor e Destrutor
 ArvoreBinariaBusca::ArvoreBinariaBusca() : raiz(nullptr) {}
 
 ArvoreBinariaBusca::~ArvoreBinariaBusca() {
@@ -23,7 +23,7 @@ void ArvoreBinariaBusca::destruirRecursivo(No* no) {
     }
 }
 
-// --- Métodos Públicos (Wrappers) ---
+//  Métodos Públicos 
 void ArvoreBinariaBusca::Inserir(Elemento* elemento) {
     raiz = inserirRecursivo(raiz, elemento);
 }
@@ -55,7 +55,7 @@ void ArvoreBinariaBusca::posOrdem() const {
 }
 
 
-// --- Funções Auxiliares Recursivas (Implementação) ---
+// Funções Auxiliares Recursivas 
 
 ArvoreBinariaBusca::No* ArvoreBinariaBusca::inserirRecursivo(No* no, Elemento* elemento) {
     if (no == nullptr) {
@@ -116,7 +116,7 @@ ArvoreBinariaBusca::No* ArvoreBinariaBusca::removerRecursivo(No* no, long id) {
     return no;
 }
 
-// --- Percursos ---
+// Percursos
 
 void ArvoreBinariaBusca::emOrdemRecursivo(No* no) const {
     if (no != nullptr) {
