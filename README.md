@@ -93,6 +93,10 @@ Graças à hierarquia e aos métodos virtuais, as estruturas de dados podem arma
 ### 3. Encapsulamento
 O acesso aos atributos e às estruturas internas das classes é controlado. Detalhes de implementação, como a classe `No` nas listas encadeadas e na árvore, são privados, expondo apenas uma interface pública e segura.
 
+### 4. Reutilização de Código: Composição sobre Herança
+-   **Padrão de Projeto Adaptador**: Em vez de fazer com que `Pilha`, `FilaBasica` e `Deque` herdem de `ListaNaoOrdenada`, optamos por usar **composição**. A `Pilha`, por exemplo, *contém* uma instância de `ListaNaoOrdenada` e *adapta* os métodos dela (`inserirNoFinal`, `removerUltimo`) para a interface de uma pilha (`empilhar`, `desempilhar`).
+-   **Vantagens da Composição**: Esta abordagem é preferível à herança de implementação, pois promove baixo acoplamento. A `Pilha` não herda todos os métodos públicos da lista, expondo apenas o que faz sentido para seu contexto, o que torna a interface mais limpa e segura.
+
 ---
 
 ## 🏛️ Decisões de Design
@@ -139,10 +143,11 @@ Aqui detalhamos o propósito de cada classe e as decisões de design que guiaram
 - **`Aluno` e `Professor` (concretas):** Herdam de `Elemento` e implementam comportamento específico.
 
 ### Estruturas Implementadas
-- **4 Estruturas Sequenciais:** `ListaNaoOrdenada`, `ListaOrdenada`, `Pilha` e `FilaCircular`.
+- **5 Estruturas Sequenciais:** `ListaNaoOrdenada`, `ListaOrdenada`, `Pilha`, `FilaCircular` e `Deque`.
 - **4 Estruturas Encadeadas:** `ListaDuplamenteEncadeada`, `ListaDuplamenteEncadeadaCircular`, `FilaEncadeada` e `ArvoreBinariaBusca`.
-- **3 Adaptadores por Composição:** `Pilha`, `FilaBasica` e `FilaEncadeada`, que reutilizam o código de listas subjacentes.
+- **4 Adaptadores por Composição:** `Pilha`, `FilaBasica`, `FilaEncadeada` e `Deque`, que reutilizam o código de listas subjacentes.
 - **1 Estrutura Hierárquica:** `ArvoreBinariaBusca` para ordenação e busca eficiente.
+
 
 ### Recursos Especiais
 - **Polimorfismo:** Permite que as estruturas armazenem `Aluno` e `Professor` de forma intercambiável.
@@ -173,6 +178,10 @@ A tabela a seguir resume a complexidade de tempo (Big O) para as principais oper
 | | `desenfileirar` | `O(n)` | Mapeia para `removerPrimeiro` da lista. |
 | **Fila Circular** | `enfileirar` | `O(1)` | Acesso direto com aritmética modular. |
 | | `desenfileirar` | `O(1)` | Acesso direto com aritmética modular. |
+| **Deque** | `enfileirarInicio` | `O(n)` | Mapeia para `inserirNoInicio` da lista base. |
+| | `enfileirarFim` | `O(1)` | Mapeia para `inserirNoFinal` da lista base. |
+| | `desenfileirarInicio` | `O(n)` | Mapeia para `removerPrimeiro` da lista base. |
+| | `desenfileirarFim` | `O(1)` | Mapeia para `removerUltimo` da lista base. |
 | **Lista Duplamente Enc.**| Inserir no Início / Final | `O(1)` | Manipulação direta de ponteiros `cabeca`/`cauda`. |
 | | Remover do Início / Final | `O(1)` | Manipulação direta de ponteiros `cabeca`/`cauda`. |
 | | Buscar / Remover por ID | `O(n)` | Requer busca linear. |
