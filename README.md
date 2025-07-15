@@ -93,7 +93,7 @@ Graças à hierarquia e aos métodos virtuais, as estruturas de dados podem arma
 ### 3. Encapsulamento
 O acesso aos atributos e às estruturas internas das classes é controlado. Detalhes de implementação, como a classe `No` nas listas encadeadas e na árvore, são privados, expondo apenas uma interface pública e segura.
 
-### 4. Reutilização de Código: Composição sobre Herança
+### Otimização: Reutilização de Código: Composição sobre Herança
 -   **Padrão de Projeto Adaptador**: Em vez de fazer com que `Pilha`, `FilaBasica` e `Deque` herdem de `ListaNaoOrdenada`, optamos por usar **composição**. A `Pilha`, por exemplo, *contém* uma instância de `ListaNaoOrdenada` e *adapta* os métodos dela (`inserirNoFinal`, `removerUltimo`) para a interface de uma pilha (`empilhar`, `desempilhar`).
 -   **Vantagens da Composição**: Esta abordagem é preferível à herança de implementação, pois promove baixo acoplamento. A `Pilha` não herda todos os métodos públicos da lista, expondo apenas o que faz sentido para seu contexto, o que torna a interface mais limpa e segura.
 
