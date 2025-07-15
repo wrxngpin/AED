@@ -107,6 +107,11 @@ Aqui detalhamos o propósito de cada classe e as decisões de design que guiaram
 -   **Propósito:** Uma implementação de lista com alocação sequencial (array estático). Serve como a base para a Parte I do trabalho e como componente para outras estruturas.
 -   **Decisão de Design:** A escolha de um array estático foi intencional para demonstrar as características e limitações da alocação sequencial.
 
+  ### `Deque`
+-   **Propósito:** Implementar um Deque (Double-Ended Queue), uma fila que permite inserções e remoções eficientes em ambas as extremidades.
+-   **Decisão de Design:** Assim como a Pilha e a Fila, o Deque foi implementado usando **composição** com a `ListaNaoOrdenada`. Ele adapta os métodos de inserção/remoção do início e do fim da lista para a interface de um Deque, demonstrando a flexibilidade do padrão Adapter. No entanto, herda as ineficiências da lista base para operações no início (`O(n)`).
+
+
 ### `FilaBasica` vs. `FilaCircular`
 -   **Propósito:** Ambas implementam o conceito de Fila (FIFO), mas com abordagens diferentes.
 -   **Decisão de Design:**
