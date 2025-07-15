@@ -15,7 +15,7 @@ public:
     std::string getNome() const;
     std::string getArea() const;
 
-    // --- Implementação dos Métodos Virtuais Obrigatórios ---
+    // Implementação dos Métodos Virtuais Obrigatórios
     void imprimirInfo() const override;
     Elemento* clone() const override; // A correção para o erro
 };
