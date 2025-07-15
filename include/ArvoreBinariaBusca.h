@@ -15,7 +15,7 @@ private:
 
     No* raiz;
 
-    // --- Funções Auxiliares Recursivas (privadas) ---
+    // Funções Auxiliares Recursivas 
     // A implementação pública chama estas funções recursivas.
     No* inserirRecursivo(No* no, Elemento* elemento);
     No* removerRecursivo(No* no, long id);
@@ -31,7 +31,7 @@ public:
     ~ArvoreBinariaBusca();
     bool estaVazia() const;
 
-    // --- Métodos Públicos ---
+    // Métodos Públicos
     void Inserir(Elemento* elemento);
     void RemoverPeloId(long id);
     Elemento* BuscarPeloId(long id) const;
