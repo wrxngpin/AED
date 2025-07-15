@@ -11,7 +11,6 @@ public:
     // Construtor
     Professor(long id, const std::string& nome, const std::string& area);
 
-    // Getters
     std::string getNome() const;
     std::string getArea() const;
 
