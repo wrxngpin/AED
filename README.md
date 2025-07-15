@@ -1,6 +1,6 @@
 # 💻 Estruturas de Dados com Programação Orientada a Objetos em C++
 
-> **Resumo:** Implementação de estruturas de dados fundamentais (Listas, Pilhas, Filas e Árvores) em C++, aplicando os quatro pilares da Programação Orientada a Objetos: Abstração, Encapsulamento, Herança e Polimorfismo.
+Implementação de estruturas de dados fundamentais (Listas, Pilhas, Filas e Árvores) em C++, aplicando os quatro pilares da Programação Orientada a Objetos: Abstração, Encapsulamento, Herança e Polimorfismo.
 
 Este projeto foi desenvolvido para a disciplina de **Algoritmos e Estruturas de Dados** na **Universidade do Estado do Rio de Janeiro (IPRJ)**.
 
