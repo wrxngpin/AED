@@ -3,6 +3,7 @@
 #include "include/ListaNaoOrdenada.h"
 #include "include/ListaOrdenada.h"
 #include "include/Pilha.h"
+#include "include/Deque.h"
 #include "include/FilaBasica.h"
 #include "include/FilaCircular.h"
 #include "include/PilhaEncadeada.h"           
@@ -22,6 +23,7 @@ using namespace std;
 ListaNaoOrdenada lnao;
 ListaOrdenada lord;
 Pilha pilha;
+Deque deque;
 FilaBasica filaB;
 FilaCircular filaC;
 
@@ -40,6 +42,7 @@ void limparBuffer();
 void menuPrincipal();
 void menuListaNaoOrdenada();
 void menuListaOrdenada();
+void menuDeque();
 void menuPilha();
 void menuFila();
 bool idExiste(int id);
@@ -150,7 +153,7 @@ void menuPrincipal() {
             case 6: cout << "Saindo...\n"; break;
             default: cout << "Opção inválida!\n";
         }
-    } while(opcao != 5);
+    } while(opcao != 6);
 }
 
 void menuListaNaoOrdenada() {
@@ -658,7 +661,8 @@ void menuEncadeadas() {
         cout << "4. Lista Duplamente Encadeada\n";        
         cout << "5. Lista Duplamente Encadeada Circular\n"; 
         cout << "6. Arvore Binaria de Busca\n";
-        cout << "7. Voltar\n";
+        cout << "7. Deque\n";
+        cout << "8. Voltar\n";
         cout << "Escolha uma opcao: ";
         cin >> opcao;
         limparBuffer();
@@ -670,10 +674,11 @@ void menuEncadeadas() {
             case 4: menuListaDuplamenteEncadeada(); break;        
             case 5: menuListaDuplamenteEncadeadaCircular(); break; 
             case 6: menuArvoreBinaria(); break;
-            case 7: break;
+            case 7: menuDeque();
+            case 8: break;
             default: cout << "Opcao invalida!\n";
         }
-    } while(opcao != 4);
+    } while(opcao != 8);
 }
 
 
@@ -1086,7 +1091,100 @@ void menuArvoreBinaria() {
     } while(opcao != 7);
 }
 
+void menuDeque() {
+    int opcao;
+    do {
+        system("cls || clear");
+        cout << "========== DEQUE ==========\n";
+        cout << "1. Enfileirar no Início (addFront)\n";
+        cout << "2. Enfileirar no Fim (addBack)\n";
+        cout << "3. Desenfileirar do Início (removeFront)\n";
+        cout << "4. Desenfileirar do Fim (removeBack)\n";
+        cout << "5. Consultar Início (peekFront)\n";
+        cout << "6. Consultar Fim (peekBack)\n";
+        cout << "7. Imprimir todos\n";
+        cout << "8. Voltar\n";
+        cout << "Escolha uma opção: ";
+        cin >> opcao;
+        limparBuffer();
 
+        switch(opcao) {
+            case 1: { // Enfileirar no Início
+                int tipo;
+                cout << "1. Aluno\n2. Professor\nEscolha: ";
+                cin >> tipo;
+                limparBuffer();
+                Elemento* e = criarElementoComIdValido(tipo);
+                if(deque.enfileirarInicio(e)) {
+                    cout << "Enfileirado no início com sucesso!\n";
+                } else {
+                    cout << "Falha ao enfileirar no início (deque cheio ou erro)!\n";
+                    delete e;
+                }
+                break;
+            }
+            case 2: { // Enfileirar no Fim
+                int tipo;
+                cout << "1. Aluno\n2. Professor\nEscolha: ";
+                cin >> tipo;
+                limparBuffer();
+                Elemento* e = criarElementoComIdValido(tipo);
+                if(deque.enfileirarFim(e)) {
+                    cout << "Enfileirado no fim com sucesso!\n";
+                } else {
+                    cout << "Falha ao enfileirar no fim (deque cheio ou erro)!\n";
+                    delete e;
+                }
+                break;
+            }
+            case 3: // Desenfileirar do Início
+                if(deque.desenfileirarInicio()) {
+                    cout << "Desenfileirado do início com sucesso!\n";
+                } else {
+                    cout << "Deque vazio!\n";
+                }
+                break;
+            case 4: // Desenfileirar do Fim
+                if(deque.desenfileirarFim()) {
+                    cout << "Desenfileirado do fim com sucesso!\n";
+                } else {
+                    cout << "Deque vazio!\n";
+                }
+                break;
+            case 5: { // Consultar Início
+                if(const Elemento* frente = deque.consultarInicio()) {
+                    cout << "Elemento no início:\n";
+                    frente->imprimirInfo();
+                } else {
+                    cout << "Deque vazio!\n";
+                }
+                break;
+            }
+            case 6: { // Consultar Fim
+                if(const Elemento* fim = deque.consultarFim()) {
+                    cout << "Elemento no fim:\n";
+                    fim->imprimirInfo();
+                } else {
+                    cout << "Deque vazio!\n";
+                }
+                break;
+            }
+            case 7: // Imprimir todos
+                cout << "====== ELEMENTOS NO DEQUE ======\n";
+                deque.imprimirTodos();
+                break;
+            case 8: // Voltar
+                cout << "Voltando ao menu principal...\n";
+                break;
+            default:
+                cout << "Opção inválida!\n";
+        }
+        if(opcao != 8) {
+            cout << "\nPressione Enter para continuar...";
+            cin.get();
+        }
+    } while(opcao != 8);
+}
 
 int main() {
     menuPrincipal();
